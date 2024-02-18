@@ -1,91 +1,133 @@
 ---
 import Layout from "../layouts/Layout.astro";
-// import Card from '../components/Card.astro';
+import VarProcessCard from "../components/VarProcessCard.astro";
+import FaqCard from "../components/FaqCard.jsx";
+
+import { EnvelopeIcon, ClockIcon, BeakerIcon } from "@heroicons/react/24/solid";
 ---
 
 <Layout>
   <div class="mx-auto max-w-7xl">
     <div
-      class="flex flex-col justify-center items-center text-center text-balance py-52"
+      class="flex flex-col justify-center items-center text-center text-balance py-60"
     >
-      <h1 class="font-black text-6xl">
+      <h1 class="font-black sm:text-6xl text-4xl">
         Välkommen till Spindelsanering Göteborg
       </h1>
       <div class="font-bold text-2xl mt-2">
         Din expert på snabb och effektiv spindelsanering i Göteborg och hela
-        Sverige.
+        Sverige
       </div>
-      <div class="mt-8 flex gap-4">
-        <button class="bg-black text-white rounded-full py-2 px-8 font-semibold"
+      <div class="mt-6 flex gap-4">
+        <button
+          class="bg-black text-white rounded-full py-2 px-8 font-semibold shadow-md"
           >Boka nu</button
         >
-        <button class="bg-black text-white rounded-full py-2 px-8 font-semibold"
+        <button
+          class="bg-black text-white rounded-full py-2 px-8 font-semibold shadow-md"
           >Läs mer</button
         >
       </div>
+      <div class="mt-20">
+        <p>
+          Vi erbjuder en lösning för en spindelfri och trygg fasad, perfekt för
+          dig med spindelfobi. Slipp oron för spindlar när du har fönstret öppet
+          på sommaren. Boka vår effektiva metod nu. Vi är baserade i Göteborg
+          men tar uppdrag utanför om det passar vår rutt. Ge din fasad omsorg
+          och njut orolös.
+        </p>
+      </div>
     </div>
+  </div>
+  <div class="mx-auto max-w-7xl">
     <div class="mb-20 border-b-4 border-neutral-100 pb-16">
-      <h2 class="font-black text-4xl mb-6">Vår Process</h2>
-      <div class="flex gap-4">
-        <div class="flex-1 bg-white rounded-2xl p-6">
+      <div class="flex flex-col sm:flex-row">
+        <h2 class="font-black text-4xl mb-6 sm:min-w-96">
+          Varför du behöver välja oss
+        </h2>
+        <div class="grid grid-cols-1 w-full gap-4">
+          <VarProcessCard title="Fem års erfarenhet"
+            >Vi är övertygade om att vi är absolut bäst på marknaden. Varför?
+            Alla våra tekniker har över fem års erfarenhet av spindelsanering
+            och kan upptäcka gömställen som ingen annan
+          </VarProcessCard>
+          <VarProcessCard title="Lättillgängliga och supersnabba">
+            Vi är inte bara lättillgängliga, vi är supersnabba att svara, vare
+            sig det är via telefon, e-post eller sociala medier. Den snabbaste
+            vägen till att boka oss är via e-post eller vårt smidiga formulär på
+            hemsidan
+          </VarProcessCard>
+          <VarProcessCard title="Kemikalieinspektion">
+            Vi följer kemikalieinspektionens regler och har samma
+            förutsättningar som alla andra för att välja det lämpligaste medlet
+          </VarProcessCard>
+          <VarProcessCard title="Vi säger adjö inte bara till spindlarna">
+            Vi säger adjö inte bara till spindlarna, utan även till andra
+            otrevliga kräldjur som kryp, vägglöss och myror. Observera att detta
+            inte ingår som standard, men vi har möjlighet att erbjuda sanering
+            mot dessa oönskade besökare.
+          </VarProcessCard>
+        </div>
+      </div>
+      <p class="p-4 mt-8 text-center">
+        Men här är skillnaden: vår erfarenhet har visat att för en framgångsrik
+        sanering krävs gedigen erfarenhet och sunt förnuft för att applicera
+        medlet på ett effektivt och professionellt sätt – och det är här vi
+        verkligen utmärker oss. Vi skiner när det kommer till erfarenhet och
+        expertis!
+      </p>
+    </div>
+  </div>
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-20 border-b-4 border-neutral-100 pb-16">
+      <h2 class="font-black text-4xl mb-8">Vår Process</h2>
+      <div class="flex flex-col md:flex-row gap-4">
+        <div class="flex-1 bg-white rounded-2xl p-6 shadow relative">
+          <div
+            class="top-0 left-0 absolute -translate-x-1/4 -translate-y-1/4 bg-white flex items-center justify-center rounded-full size-8 shadow font-semibold text-lg"
+          >
+            1
+          </div>
           <h3 class="font-semibold text-lg mb-2 flex items-center gap-2">
-            <span
-              class="bg-black font-bold text-white flex rounded-full size-5 text-sm justify-center items-center"
-              >1</span
-            >
+            <EnvelopeIcon className="size-6" />
             Konsultation
           </h3>
           <p>Berätta om din fastighet och de problem du stöter på</p>
         </div>
-        <div class="flex-1 bg-white rounded-2xl p-6">
+        <div class="flex-1 bg-white rounded-2xl p-6 shadow relative">
+          <div
+            class="top-0 left-0 absolute -translate-x-1/4 -translate-y-1/4 bg-white flex items-center justify-center rounded-full size-8 shadow font-semibold text-lg"
+          >
+            2
+          </div>
           <h3 class="font-semibold text-lg mb-2 flex items-center gap-2">
-            <span
-              class="bg-black font-bold text-white flex rounded-full size-5 text-sm justify-center items-center"
-              >2</span
-            >
+            <ClockIcon className="size-6" />
             Överenskommelse
           </h3>
           <p>Vi går igenom detaljerna och bokar in en tid.</p>
         </div>
-        <div class="flex-1 bg-white rounded-2xl p-6">
+        <div class="flex-1 bg-white rounded-2xl p-6 shadow relative">
+          <div
+            class="top-0 left-0 absolute -translate-x-1/4 -translate-y-1/4 bg-white flex items-center justify-center rounded-full size-8 shadow font-semibold text-lg"
+          >
+            3
+          </div>
           <h3 class="font-semibold text-lg mb-2 flex items-center gap-2">
-            <span
-              class="bg-black font-bold text-white flex rounded-full size-5 text-sm justify-center items-center"
-              >3</span
-            >
+            <BeakerIcon className="size-6" />
             Effektiv Sanering
           </h3>
           <p>Vi utför saneringen med precision och professionalism</p>
         </div>
       </div>
     </div>
-    <div class="mb-20 flex border-b-4 border-neutral-100 pb-16">
-      <h2 class="font-black text-4xl mb-6 min-w-96">
-        Varför du behöver välja oss?
-      </h2>
-      <p>
-        Vi är övertygade om att vi är absolut bäst på marknaden. Varför? Alla
-        våra tekniker har över 5 års erfarenhet av spindelsanering och kan
-        upptäcka gömställen som ingen annan. Vi är inte bara lättillgängliga, vi
-        är supersnabba att svara, vare sig det är via telefon, e-post eller
-        sociala medier. Den snabbaste vägen till att boka oss är via e-post
-        eller vårt smidiga formulär på hemsidan. Vi följer
-        kemikalieinspektionens regler och har samma förutsättningar som alla
-        andra för att välja det lämpligaste medlet. Men här är skillnaden: vår
-        erfarenhet har visat att för en framgångsrik sanering krävs gedigen
-        erfarenhet och sunt förnuft för att applicera medlet på ett effektivt
-        och professionellt sätt – och det är här vi verkligen utmärker oss. Vi
-        skiner när det kommer till erfarenhet och expertis! <br />
-        <br /> Vi säger adjö inte bara till spindlarna, utan även till andra otrevliga
-        kräldjur som kryp, vägglöss och myror. Observera att detta inte ingår som
-        standard, men vi har möjlighet att erbjuda sanering mot dessa oönskade besökare.
-      </p>
-    </div>
+  </div>
+
+  <div class="mx-auto max-w-7xl">
     <div
-      class="mb-20 flex flex-row-reverse border-b-4 border-neutral-100 pb-16"
+      class="mb-20 flex flex-col md:flex-row-reverse border-b-4 border-neutral-100 pb-16"
     >
-      <h2 class="font-black text-4xl mb-6 min-w-96">
-        Om Spindelsanering Göteborg
+      <h2 class="font-black text-4xl mb-6 sm:min-w-96">
+        Om spindelsanering Göteborg
       </h2>
       <p>
         Vi är stolta att vara Göteborgsbaserade och erbjuda exklusiv
@@ -105,6 +147,47 @@ import Layout from "../layouts/Layout.astro";
         kvalitet och service står i fokus.
       </p>
     </div>
+  </div>
+  <div class="mx-auto max-w-7xl">
+    <div
+      class="mb-20 flex flex-col sm:flex-row border-b-4 border-neutral-100 pb-16"
+    >
+      <h2 class="font-black text-4xl mb-6 sm:min-w-96">Vanliga Frågor</h2>
+      <div class="flex flex-col gap-4 w-full">
+        <FaqCard
+          client:visible
+          title={"Hur ofta bör spindelsaneringen utföras?"}
+          desc="Vi rekommenderar årlig sanering för bästa resultat"
+        />
+        <FaqCard
+          client:visible
+          title={"När kan fönsterna putsas efter saneringen?"}
+          desc="För optimalt fäste av medlet rekommenderar vi att vänta minst en vecka efter saneringen innan fönsterputsning"
+        />
+        <FaqCard
+          client:visible
+          title={"Berättigar tjänsten rut-avdrag?"}
+          desc="Tyvärr godkänner inte Skatteverket denna tjänst för rutavdrag"
+        />
+        <FaqCard
+          client:visible
+          title={"Kan jag dela utkörningsavgiften med mina grannar?"}
+          desc="Absolut, vi delar upp avgiften om ni är flera."
+        />
+        <FaqCard
+          client:visible
+          title={"Fasadtvätt innan eller efter?"}
+          desc="Vi rekommenderar att tvätta fasaden innan sanering om du planerar att göra det under säsongen."
+        />
+        <FaqCard
+          client:visible
+          title={"Varför har jag inte hittat er tidigare?"}
+          desc="För de som längtat efter en spindelfri tillvaro kan det vara en tanke som dyker upp. Vår exklusiva spindelsanering är skräddarsydd för att erbjuda den trygghet och komfort som du förtjänar. Vi välkomnar dig att upptäcka skillnaden med Spindelsanering Göteborg och skapa en spindelfri tillvaro för dig och din familj"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="mx-auto max-w-7xl">
     <div
       class="mb-20 border-b-4 border-neutral-100 pb-16 flex flex-col items-center"
     >
@@ -116,7 +199,7 @@ import Layout from "../layouts/Layout.astro";
         problem! Följ oss på Instagram för de senaste uppdateringarna. Vi ser
         fram emot att hjälpa dig och skapa en mer bekväm miljö.
       </p>
-      <button class="bg-black text-white px-5 py-2 rounded-full mt-10"
+      <button class="bg-black text-white px-5 py-2 rounded-full mt-10 shadow-md"
         >Kontakta oss</button
       >
     </div>

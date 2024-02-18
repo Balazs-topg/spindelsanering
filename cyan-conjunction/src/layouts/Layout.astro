@@ -1,6 +1,7 @@
 ---
 const { title } = Astro.props;
 import NavBarItem from "../components/NavBarItem.astro";
+import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/solid";
 ---
 
 <!doctype html>
@@ -15,7 +16,7 @@ import NavBarItem from "../components/NavBarItem.astro";
   </head>
   <body class="bg-neutral-50 text-balance">
     <nav
-      class="bg-white rounded-b-2xl p-4 uppercase font-medium flex sticky top-0"
+      class="bg-white rounded-b-2xl p-4 uppercase font-medium sm:flex sticky top-0 shadow-md hidden z-50"
     >
       <div class="flex w-full mx-auto max-w-7xl">
         <div class="flex-1 flex items-center">spindersanering göteborg</div>
@@ -25,7 +26,7 @@ import NavBarItem from "../components/NavBarItem.astro";
           <NavBarItem>Vanliga Frågor</NavBarItem>
         </div>
         <div class="flex-1 flex justify-end items-center">
-          <button class="bg-black text-white px-5 py-2 rounded-full"
+          <button class="bg-black text-white px-5 py-2 rounded-full shadow-md"
             >Kontakta oss</button
           >
         </div>
@@ -34,9 +35,14 @@ import NavBarItem from "../components/NavBarItem.astro";
     <div class="px-6">
       <slot />
     </div>
-    <footer class="bg-neutral-100 py-32 rounded-t-2xl">
+    <footer class="bg-neutral-100 py-32 rounded-t-2xl px-4">
       <div class="max-w-7xl mx-auto">
-        Mail: info@spindelsanering-goteborg.se Tel: 073-6551713
+        <div class="flex items-center">
+          <EnvelopeIcon className="size-5 mr-2" /> info@spindelsanering-goteborg.se
+        </div>
+        <div class="flex items-center">
+          <PhoneIcon className="size-5 mr-2" /> 073-6551713
+        </div>
       </div>
     </footer>
   </body>
