@@ -23,9 +23,9 @@
 
 export default {
   plugins: [
+    "prettier-plugin-astro",
     "@trivago/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss",
-    "prettier-plugin-astro",
   ],
   pluginSearchDirs: false,
 
