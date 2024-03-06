@@ -11,28 +11,29 @@ import {
 
 import { Image } from "astro:assets";
 import cover from "../../public/cover.jpg";
+import CarouselI from "@/components/Carousel";
 ---
 
 <Layout>
   <div class="relative overflow-hidden">
-    <div class="mx-auto max-w-7xl relative z-20 px-6">
+    <div class="relative z-20 mx-auto max-w-7xl px-6">
       <div
-        class="flex flex-col justify-center items-center text-center text-balance h-dvh"
+        class="flex h-dvh flex-col items-center justify-center text-balance text-center"
       >
-        <h1 class="font-black sm:text-6xl text-4xl">
+        <h1 class="text-4xl font-black sm:text-6xl">
           Välkommen till Spindelsanering Göteborg
         </h1>
-        <div class="font-bold text-2xl mt-2">
+        <div class="mt-2 text-2xl font-bold">
           Din expert på snabb och effektiv spindelsanering i Göteborg och hela
           Sverige
         </div>
         <div class="mt-6 flex gap-4">
           <button
-            class="bg-black text-white rounded-full py-2 px-8 font-semibold shadow-md"
+            class="rounded-full bg-black px-8 py-2 font-semibold text-white shadow-md"
             >Boka nu</button
           >
           <button
-            class="bg-black text-white rounded-full py-2 px-8 font-semibold shadow-md"
+            class="rounded-full bg-black px-8 py-2 font-semibold text-white shadow-md"
             >Läs mer</button
           >
         </div>
@@ -59,13 +60,13 @@ import cover from "../../public/cover.jpg";
       />
     </div> -->
   </div>
-  <div class="mx-auto max-w-7xl mt-36 px-6">
-    <div class="mb-20 border-b-4 border-neutral-100 pb-16">
+  <div class="mx-auto mt-36 max-w-7xl px-6">
+    <div class="border-b-4 border-neutral-100 pb-16">
       <div class="flex flex-col sm:flex-row">
-        <h2 class="font-black text-4xl mb-6 sm:min-w-96">
+        <h2 class="mb-6 text-4xl font-black sm:min-w-96">
           Varför du behöver välja oss
         </h2>
-        <div class="grid grid-cols-1 w-full gap-4">
+        <div class="grid w-full grid-cols-1 gap-4">
           <VarProcessCard title="Fem års erfarenhet"
             >Vi är övertygade om att vi är absolut bäst på marknaden. Varför?
             Alla våra tekniker har över fem års erfarenhet av spindelsanering
@@ -89,7 +90,7 @@ import cover from "../../public/cover.jpg";
           </VarProcessCard>
         </div>
       </div>
-      <p class="p-4 mt-8 text-center">
+      <p class="mt-8 p-4 text-center">
         Men här är skillnaden: vår erfarenhet har visat att för en framgångsrik
         sanering krävs gedigen erfarenhet och sunt förnuft för att applicera
         medlet på ett effektivt och professionellt sätt – och det är här vi
@@ -98,41 +99,49 @@ import cover from "../../public/cover.jpg";
       </p>
     </div>
   </div>
+  <div class="mx-auto mt-20 max-w-7xl px-6">
+    <div class="mb-20 border-b-4 border-neutral-100 pb-16">
+      <h2 class="mb-12 text-center text-4xl font-black sm:min-w-96">
+        Ta en titt på hur det kan se ut
+      </h2>
+      <CarouselI client:load />
+    </div>
+  </div>
   <div class="mx-auto max-w-7xl px-6">
     <div class="mb-20 border-b-4 border-neutral-100 pb-16">
-      <h2 class="font-black text-4xl mb-8">Vår Process</h2>
-      <div class="flex flex-col md:flex-row gap-4">
-        <div class="flex-1 bg-white rounded-2xl p-6 shadow relative">
+      <h2 class="mb-8 text-4xl font-black">Vår Process</h2>
+      <div class="flex flex-col gap-4 md:flex-row">
+        <div class="relative flex-1 rounded-2xl bg-white p-6 shadow">
           <div
-            class="top-0 left-0 absolute -translate-x-1/4 -translate-y-1/4 bg-white flex items-center justify-center rounded-full size-8 shadow font-semibold text-lg"
+            class="absolute left-0 top-0 flex size-8 -translate-x-1/4 -translate-y-1/4 items-center justify-center rounded-full bg-white text-lg font-semibold shadow"
           >
             1
           </div>
-          <h3 class="font-semibold text-lg mb-2 flex items-center gap-2">
+          <h3 class="mb-2 flex items-center gap-2 text-lg font-semibold">
             <EnvelopeIcon className="size-6" />
             Konsultation
           </h3>
           <p>Berätta om din fastighet och de problem du stöter på</p>
         </div>
-        <div class="flex-1 bg-white rounded-2xl p-6 shadow relative">
+        <div class="relative flex-1 rounded-2xl bg-white p-6 shadow">
           <div
-            class="top-0 left-0 absolute -translate-x-1/4 -translate-y-1/4 bg-white flex items-center justify-center rounded-full size-8 shadow font-semibold text-lg"
+            class="absolute left-0 top-0 flex size-8 -translate-x-1/4 -translate-y-1/4 items-center justify-center rounded-full bg-white text-lg font-semibold shadow"
           >
             2
           </div>
-          <h3 class="font-semibold text-lg mb-2 flex items-center gap-2">
+          <h3 class="mb-2 flex items-center gap-2 text-lg font-semibold">
             <ClockIcon className="size-6" />
             Överenskommelse
           </h3>
           <p>Vi går igenom detaljerna och bokar in en tid.</p>
         </div>
-        <div class="flex-1 bg-white rounded-2xl p-6 shadow relative">
+        <div class="relative flex-1 rounded-2xl bg-white p-6 shadow">
           <div
-            class="top-0 left-0 absolute -translate-x-1/4 -translate-y-1/4 bg-white flex items-center justify-center rounded-full size-8 shadow font-semibold text-lg"
+            class="absolute left-0 top-0 flex size-8 -translate-x-1/4 -translate-y-1/4 items-center justify-center rounded-full bg-white text-lg font-semibold shadow"
           >
             3
           </div>
-          <h3 class="font-semibold text-lg mb-2 flex items-center gap-2">
+          <h3 class="mb-2 flex items-center gap-2 text-lg font-semibold">
             <BeakerIcon className="size-6" />
             Effektiv Sanering
           </h3>
@@ -144,9 +153,9 @@ import cover from "../../public/cover.jpg";
 
   <div class="mx-auto max-w-7xl px-6">
     <div
-      class="mb-20 flex flex-col md:flex-row-reverse border-b-4 border-neutral-100 pb-16"
+      class="mb-20 flex flex-col border-b-4 border-neutral-100 pb-16 md:flex-row-reverse"
     >
-      <h2 class="font-black text-4xl mb-6 sm:min-w-96">
+      <h2 class="mb-6 text-4xl font-black sm:min-w-96">
         Om spindelsanering Göteborg
       </h2>
       <p>
@@ -170,10 +179,10 @@ import cover from "../../public/cover.jpg";
   </div>
   <div class="mx-auto max-w-7xl px-6">
     <div
-      class="mb-20 flex flex-col sm:flex-row border-b-4 border-neutral-100 pb-16"
+      class="mb-20 flex flex-col border-b-4 border-neutral-100 pb-16 sm:flex-row"
     >
-      <h2 class="font-black text-4xl mb-6 sm:min-w-96">Vanliga Frågor</h2>
-      <div class="flex flex-col gap-4 w-full">
+      <h2 class="mb-6 text-4xl font-black sm:min-w-96">Vanliga Frågor</h2>
+      <div class="flex w-full flex-col gap-4">
         <FaqCard
           client:visible
           title={"Hur ofta bör spindelsaneringen utföras?"}
@@ -209,9 +218,9 @@ import cover from "../../public/cover.jpg";
   </div>
   <div class="mx-auto max-w-7xl px-6">
     <div
-      class="mb-20 border-b-4 border-neutral-100 pb-16 flex flex-col items-center"
+      class="mb-20 flex flex-col items-center border-b-4 border-neutral-100 pb-16"
     >
-      <h2 class="font-black text-4xl mb-6 min-w-96 text-center">
+      <h2 class="mb-6 min-w-96 text-center text-4xl font-black">
         Kontakta oss
       </h2>
       <p class="text-center">
@@ -219,7 +228,7 @@ import cover from "../../public/cover.jpg";
         problem! Följ oss på Instagram för de senaste uppdateringarna. Vi ser
         fram emot att hjälpa dig och skapa en mer bekväm miljö.
       </p>
-      <button class="bg-black text-white px-5 py-2 rounded-full mt-10 shadow-md"
+      <button class="mt-10 rounded-full bg-black px-5 py-2 text-white shadow-md"
         >Kontakta oss</button
       >
     </div>
