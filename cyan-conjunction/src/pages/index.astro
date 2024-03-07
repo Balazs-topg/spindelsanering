@@ -12,6 +12,8 @@ import {
 import { Image } from "astro:assets";
 import cover from "../../public/cover.jpg";
 import CarouselI from "@/components/Carousel";
+import IndexBokaNu from "../components/IndexBokaNu";
+import KontaktaOssBtn from "@/components/KontaktaOssBtn";
 ---
 
 <Layout>
@@ -28,11 +30,13 @@ import CarouselI from "@/components/Carousel";
           Sverige
         </div>
         <div class="mt-6 flex gap-4">
-          <button
+          <!-- <button
             class="rounded-full bg-black px-8 py-2 font-semibold text-white shadow-md"
             >Boka nu</button
-          >
+          > -->
+          <IndexBokaNu client:load />
           <button
+            onclick='document.getElementById("vdbvo").scrollIntoView({behavior: "smooth",block: "start",inline: "nearest"});'
             class="rounded-full bg-black px-8 py-2 font-semibold text-white shadow-md"
             >Läs mer</button
           >
@@ -236,9 +240,9 @@ import CarouselI from "@/components/Carousel";
         problem! Följ oss på Instagram för de senaste uppdateringarna. Vi ser
         fram emot att hjälpa dig och skapa en mer bekväm miljö.
       </p>
-      <button class="mt-10 rounded-full bg-black px-5 py-2 text-white shadow-md"
-        >Kontakta oss</button
-      >
+      <div class="mt-10">
+        <KontaktaOssBtn client:load />
+      </div>
     </div>
   </div>
 </Layout>
