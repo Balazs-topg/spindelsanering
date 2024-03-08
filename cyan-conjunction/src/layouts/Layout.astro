@@ -1,5 +1,4 @@
 ---
-const { title } = Astro.props;
 import NavBarItem from "../components/NavBarItem";
 import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/solid";
 
@@ -17,7 +16,7 @@ import KontaktaOssDialog from "@/components/KontaktaOssDialog";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>Spindelsanering Göteborg</title>
   </head>
   <body class="text-balance bg-neutral-50">
     <nav
@@ -27,20 +26,26 @@ import KontaktaOssDialog from "@/components/KontaktaOssDialog";
         <div class="flex flex-1 items-center">
           <!-- spindersanering göteborg -->
           <div class="flex h-10 items-center justify-center overflow-hidden">
-            <Image src={logo} alt="A bird." width="250" height="250" />
+            <Image
+              loading="eager"
+              src={logo}
+              alt="A bird."
+              width="250"
+              height="250"
+            />
           </div>
         </div>
         <div class="flex flex-1 items-center justify-center gap-6">
-          <NavBarItem scrollToId="vp" client:load>Process</NavBarItem>
-          <NavBarItem scrollToId="ospg" client:load>Om Oss</NavBarItem>
-          <NavBarItem scrollToId="vf" client:load>Vanliga Frågor</NavBarItem>
+          <NavBarItem scrollToId="vp" client:idle>Process</NavBarItem>
+          <NavBarItem scrollToId="ospg" client:idle>Om Oss</NavBarItem>
+          <NavBarItem scrollToId="vf" client:idle>Vanliga Frågor</NavBarItem>
         </div>
         <div class="flex flex-1 items-center justify-end">
           <KontaktaOssBtn client:load />
         </div>
       </div>
     </nav>
-    <KontaktaOssDialog client:load />
+    <KontaktaOssDialog client:idle />
     <slot />
     <footer class="rounded-t-2xl bg-neutral-100 px-4 py-32">
       <div class="mx-auto max-w-7xl">

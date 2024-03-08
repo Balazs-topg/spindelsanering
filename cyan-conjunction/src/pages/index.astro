@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import VarProcessCard from "../components/VarProcessCard.astro";
-import FaqCard from "../components/FaqCard.jsx";
+import Faq from "../components/Faq.jsx";
 
 import {
   EnvelopeIcon,
@@ -30,14 +30,10 @@ import KontaktaOssBtn from "@/components/KontaktaOssBtn";
           Sverige
         </div>
         <div class="mt-6 flex gap-4">
-          <!-- <button
-            class="rounded-full bg-black px-8 py-2 font-semibold text-white shadow-md"
-            >Boka nu</button
-          > -->
           <IndexBokaNu client:load />
           <button
             onclick='document.getElementById("vdbvo").scrollIntoView({behavior: "smooth",block: "start",inline: "nearest"});'
-            class="rounded-full bg-black px-8 py-2 font-semibold text-white shadow-md"
+            class="rounded-full border-2 border-black px-8 py-2 font-semibold text-black shadow-md"
             >Läs mer</button
           >
         </div>
@@ -114,7 +110,7 @@ import KontaktaOssBtn from "@/components/KontaktaOssBtn";
       >
         Ta en titt på hur det kan se ut
       </h2>
-      <CarouselI client:load />
+      <CarouselI client:visible />
     </div>
   </div>
   <div class="mx-auto max-w-7xl px-6">
@@ -195,35 +191,34 @@ import KontaktaOssBtn from "@/components/KontaktaOssBtn";
         Vanliga Frågor
       </h2>
       <div class="flex w-full flex-col gap-4">
-        <FaqCard
+        <Faq
           client:visible
-          title={"Hur ofta bör spindelsaneringen utföras?"}
-          desc="Vi rekommenderar årlig sanering för bästa resultat"
-        />
-        <FaqCard
-          client:visible
-          title={"När kan fönsterna putsas efter saneringen?"}
-          desc="För optimalt fäste av medlet rekommenderar vi att vänta minst en vecka efter saneringen innan fönsterputsning"
-        />
-        <FaqCard
-          client:visible
-          title={"Berättigar tjänsten rut-avdrag?"}
-          desc="Tyvärr godkänner inte Skatteverket denna tjänst för rutavdrag"
-        />
-        <FaqCard
-          client:visible
-          title={"Kan jag dela utkörningsavgiften med mina grannar?"}
-          desc="Absolut, vi delar upp avgiften om ni är flera."
-        />
-        <FaqCard
-          client:visible
-          title={"Fasadtvätt innan eller efter?"}
-          desc="Vi rekommenderar att tvätta fasaden innan sanering om du planerar att göra det under säsongen."
-        />
-        <FaqCard
-          client:visible
-          title={"Varför har jag inte hittat er tidigare?"}
-          desc="För de som längtat efter en spindelfri tillvaro kan det vara en tanke som dyker upp. Vår exklusiva spindelsanering är skräddarsydd för att erbjuda den trygghet och komfort som du förtjänar. Vi välkomnar dig att upptäcka skillnaden med Spindelsanering Göteborg och skapa en spindelfri tillvaro för dig och din familj"
+          data={[
+            {
+              title: "Hur ofta bör spindelsaneringen utföras?",
+              desc: "Vi rekommenderar årlig sanering för bästa resultat",
+            },
+            {
+              title: "När kan fönsterna putsas efter saneringen?",
+              desc: "För optimalt fäste av medlet rekommenderar vi att vänta minst en vecka efter saneringen innan fönsterputsning",
+            },
+            {
+              title: "Berättigar tjänsten rut-avdrag?",
+              desc: "Tyvärr godkänner inte Skatteverket denna tjänst för rutavdrag",
+            },
+            {
+              title: "Kan jag dela utkörningsavgiften med mina grannar?",
+              desc: "Absolut, vi delar upp avgiften om ni är flera",
+            },
+            {
+              title: "Fasadtvätt innan eller efter?",
+              desc: "Vi rekommenderar att tvätta fasaden innan sanering om du planerar att göra det under säsongen.",
+            },
+            {
+              title: "Varför har jag inte hittat er tidigare?",
+              desc: "För de som längtat efter en spindelfri tillvaro kan det vara en tanke som dyker upp. Vår exklusiva spindelsanering är skräddarsydd för att erbjuda den trygghet och komfort som du förtjänar. Vi välkomnar dig att upptäcka skillnaden med Spindelsanering Göteborg och skapa en spindelfri tillvaro för dig och din familj",
+            },
+          ]}
         />
       </div>
     </div>

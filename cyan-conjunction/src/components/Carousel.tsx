@@ -63,7 +63,7 @@ export default function CarouselI() {
           <CarouselItem key={index} className=" md:basis-1/3 lg:basis-1/4">
             <CardContent className="overflow-hidden rounded-xl p-0 shadow-lg">
               {/* <span className="text-3xl font-semibold">{index + 1}</span> */}
-              <img src={image.src}></img>
+              <img alt="" src={image.src}></img>
             </CardContent>
           </CarouselItem>
         ))}
