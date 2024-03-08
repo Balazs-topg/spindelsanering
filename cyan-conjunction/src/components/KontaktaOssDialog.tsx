@@ -29,6 +29,7 @@ import { Textarea } from "./ui/textarea";
 import { $kontaktaOssIsOpen } from "@/store/KontaktaOss";
 import { valibotResolver } from "@hookform/resolvers/valibot";
 import { useStore } from "@nanostores/react";
+import { Loader2 } from "lucide-react";
 import { object, string, minLength, email, optional } from "valibot";
 
 const schema = object({
@@ -49,6 +50,8 @@ const schema = object({
 
 export default function KontaktaOssDialog() {
   const isOpen = useStore($kontaktaOssIsOpen);
+  const [isLoading, setIsLoading] = useState(false);
+  const [formSubmitRes, setFormSubmitRes] = useState("");
 
   const form = useForm({
     resolver: valibotResolver(schema),
@@ -63,136 +66,180 @@ export default function KontaktaOssDialog() {
     },
   });
 
-  function onSubmit(values: any) {
+  async function onSubmit(values: any) {
+    const formData = new FormData();
+    for (const key in values) {
+      if (values.hasOwnProperty(key)) formData.append(key, values[key]);
+    }
+    formData.append("_captcha", "false");
+    formData.append("_subject", "Formulär: Spindelsanering Goteborg");
+    setIsLoading(true);
+    const response = await fetch(
+      "https://formsubmit.co/info@spindelsanering-goteborg.se",
+      {
+        method: "post",
+        body: formData,
+      },
+    );
+    const html = await response.text();
+    setFormSubmitRes(html);
     form.reset();
-    window.location.href = "formular-mottaget";
+    document.body.innerHTML = html;
   }
 
   return (
-    <Dialog
-      open={isOpen}
-      onOpenChange={() => {
-        const userWantsToClose = window.confirm("vill du stänga formuläret?");
-        userWantsToClose && $kontaktaOssIsOpen.set(false);
-      }}
-    >
+    <Dialog open={isOpen} onOpenChange={() => $kontaktaOssIsOpen.set(false)}>
       <DialogContent className=" max-h-[calc(100dvh-8rem)] overflow-auto">
-        <DialogHeader>
-          <DialogTitle>
-            Kontakta oss, så återkommer vi så fort vi kan!
-          </DialogTitle>
-        </DialogHeader>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <DialogDescription className="space-y-4">
-              <div className="flex gap-2">
+        <>
+          <DialogHeader>
+            <DialogTitle>
+              Kontakta oss, så återkommer vi så fort vi kan!
+            </DialogTitle>
+          </DialogHeader>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+              <DialogDescription className="space-y-4">
+                <div className="flex gap-2">
+                  <FormField
+                    control={form.control}
+                    name="firstName"
+                    render={({ field }) => (
+                      <FormItem className="grow">
+                        <FormLabel>Förnamn *</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Förnamn"
+                            autoComplete="given-name"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="lastName"
+                    render={({ field }) => (
+                      <FormItem className="grow">
+                        <FormLabel>Efternamn *</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Efternamn"
+                            autoComplete="family-name"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="flex gap-2">
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem className="grow">
+                        <FormLabel>E-post *</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="E-post"
+                            autoComplete="email"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="tel"
+                    render={({ field }) => (
+                      <FormItem className="grow">
+                        <FormLabel>Telefon *</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Telefon"
+                            autoComplete="tel"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="flex gap-2">
+                  <div className="grow">
+                    <FormField
+                      control={form.control}
+                      name="adress"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Adress *</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Adress"
+                              autoComplete="street-address"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  <div className="grow">
+                    <FormField
+                      control={form.control}
+                      name="ort"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Ort *</FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder="Ort"
+                              autoComplete="address-level2"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                </div>
                 <FormField
                   control={form.control}
-                  name="firstName"
+                  name="message"
                   render={({ field }) => (
-                    <FormItem className="grow">
-                      <FormLabel>Förnamn *</FormLabel>
+                    <FormItem>
+                      <FormLabel>Meddelande</FormLabel>
                       <FormControl>
-                        <Input placeholder="Förnamn" {...field} />
+                        <Textarea
+                          placeholder="Meddelande"
+                          {...field}
+                          className="w-full"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <FormField
-                  control={form.control}
-                  name="lastName"
-                  render={({ field }) => (
-                    <FormItem className="grow">
-                      <FormLabel>Efternamn *</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Efternamn" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
+              </DialogDescription>
+              <DialogFooter className="mt-4">
+                <Button disabled={isLoading} type="submit">
+                  Skicka
+                  {isLoading && (
+                    <Loader2 className="ml-2 size-6 animate-spin" />
                   )}
-                />
-              </div>
-
-              <div className="flex gap-2">
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem className="grow">
-                      <FormLabel>E-post *</FormLabel>
-                      <FormControl>
-                        <Input placeholder="E-post" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="tel"
-                  render={({ field }) => (
-                    <FormItem className="grow">
-                      <FormLabel>Telefon *</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Telefon" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <FormField
-                control={form.control}
-                name="adress"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Adress *</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Adress" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="ort"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Ort *</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Ort" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Meddelande</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Meddelande"
-                        {...field}
-                        className="w-full"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </DialogDescription>
-            <DialogFooter className=" mt-4">
-              <Button type="submit">
-                Vi ber om ursäkt, hemsidan är under konstruktion
-              </Button>
-            </DialogFooter>
-          </form>
-        </Form>
+                </Button>
+              </DialogFooter>
+            </form>
+          </Form>
+        </>
       </DialogContent>
     </Dialog>
   );
