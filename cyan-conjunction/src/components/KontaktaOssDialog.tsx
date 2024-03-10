@@ -51,7 +51,9 @@ const schema = object({
 export default function KontaktaOssDialog() {
   const isOpen = useStore($kontaktaOssIsOpen);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [formSubmitRes, setFormSubmitRes] = useState("");
+  const [successfullySubmitted, setSuccessfullySubmitted] = useState(false);
 
   const form = useForm({
     resolver: valibotResolver(schema),
@@ -75,16 +77,28 @@ export default function KontaktaOssDialog() {
     formData.append("_subject", "Formulär: Spindelsanering Goteborg");
     setIsLoading(true);
     const response = await fetch(
-      "https://formsubmit.co/info@spindelsanering-goteborg.se",
+      "https://form-to-email-production.up.railway.app/info@spindelsanering-goteborg.se",
       {
         method: "post",
         body: formData,
       },
-    );
-    const html = await response.text();
-    setFormSubmitRes(html);
-    form.reset();
-    document.body.innerHTML = html;
+    ).catch(() => {
+      setError(true);
+      setIsLoading(false);
+    });
+    if (response && response.ok) {
+      setIsLoading(false);
+      setError(false);
+      setSuccessfullySubmitted(true);
+      const html = await response.text();
+      setFormSubmitRes(html);
+      form.reset();
+    } else {
+      console.log("response is not ok");
+      setSuccessfullySubmitted(false);
+      setIsLoading(false);
+      setError(true);
+    }
   }
 
   return (
@@ -229,7 +243,18 @@ export default function KontaktaOssDialog() {
                   )}
                 />
               </DialogDescription>
-              <DialogFooter className="mt-4">
+              <DialogFooter className="mt-4 items-center">
+                {!!error && (
+                  <div className="font-semibold text-red-500">
+                    Vi ber om ursäkt, någonting gick fel
+                  </div>
+                )}
+                {!!successfullySubmitted && (
+                  <div className="font-semibold text-green-500">
+                    Ditt svar har skickats!
+                  </div>
+                )}
+
                 <Button disabled={isLoading} type="submit">
                   Skicka
                   {isLoading && (
