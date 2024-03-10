@@ -1,11 +1,14 @@
 ---
 import NavBarItem from "../components/NavBarItem";
 import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/solid";
+import { Instagram, Phone, Mail } from "lucide-react";
 
 import { Image } from "astro:assets";
 import logo from "../../public/logo.png";
 import KontaktaOssBtn from "../components/KontaktaOssBtn";
 import KontaktaOssDialog from "@/components/KontaktaOssDialog";
+import { buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 ---
 
 <!doctype html>
@@ -20,7 +23,7 @@ import KontaktaOssDialog from "@/components/KontaktaOssDialog";
   </head>
   <body class="text-balance bg-neutral-50">
     <nav
-      class="sticky top-0 z-50 rounded-b-2xl bg-white p-3 font-medium uppercase shadow-md sm:flex"
+      class="sticky top-0 z-50 bg-white/90 p-3 font-medium uppercase shadow-md backdrop-blur sm:flex"
     >
       <div class="mx-auto flex w-full max-w-7xl">
         <div class="flex flex-1 items-center">
@@ -47,13 +50,22 @@ import KontaktaOssDialog from "@/components/KontaktaOssDialog";
     </nav>
     <KontaktaOssDialog client:idle />
     <slot />
-    <footer class="rounded-t-2xl bg-neutral-100 px-4 py-32">
+    <footer class="bg-neutral-100 px-4 py-32">
       <div class="mx-auto max-w-7xl">
         <div class="flex items-center">
-          <EnvelopeIcon className="mr-2 size-5" /> info@spindelsanering-goteborg.se
+          <Mail className="mr-2 size-5" /> info@spindelsanering-goteborg.se
         </div>
         <div class="flex items-center">
-          <PhoneIcon className="mr-2 size-5" /> 073-6551713
+          <Phone className="mr-2 size-5" /> 073-6551713
+        </div>
+        <div class="mt-4">
+          <a
+            class={`${buttonVariants({ size: "icon" })}`}
+            href="https://www.instagram.com/spindelsanering_goteborg.se/"
+            target="_blank"
+          >
+            <Instagram className="size-5" />
+          </a>
         </div>
       </div>
     </footer>

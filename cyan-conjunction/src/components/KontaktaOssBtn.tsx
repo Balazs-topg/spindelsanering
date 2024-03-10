@@ -19,7 +19,7 @@ export default function KontaktaOssBtn() {
         onClick={() => $kontaktaOssIsOpen.set(!isOpen)}
         className="rounded-full bg-black px-5 py-2 text-white shadow-md"
       >
-        Kontakta oss
+        Boka nu
       </button>
     </>
   );
