@@ -6,4 +6,4 @@ TODO
 - [ ] Center align text
 - [ ] Add instagram embed
 - [ ] Try to add image to header section
-- [ ] Make nav bar responsive
+- [x] Make navbar responsive
