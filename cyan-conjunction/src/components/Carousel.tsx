@@ -11,7 +11,7 @@ import {
 
 // import * from "/bilder-sanering-goteborg"
 // import image1 from "bilder-sanering-goteborg/A4026E6F-F6FB-41F6-82F3-2676620B4251.jpg";
-import image1 from "../../public/bilder-sanering-goteborgs/A4026E6F-F6FB-41F6-82F3-2676620B4251.jpg";
+// import image1 from "../../public/bilder-sanering-goteborgs/A4026E6F-F6FB-41F6-82F3-2676620B4251.jpg";
 import image2 from "../../public/bilder-sanering-goteborgs/IMG_2681.jpeg";
 import image3 from "../../public/bilder-sanering-goteborgs/IMG_2700.jpeg";
 import image4 from "../../public/bilder-sanering-goteborgs/IMG_3888.jpeg";
@@ -30,7 +30,7 @@ import image16 from "../../public/bilder-sanering-goteborgs/IMG_6676.jpeg";
 import image17 from "../../public/bilder-sanering-goteborgs/IMG_8903.jpeg";
 
 const arrayOfImages = [
-  image1,
+  // image1,
   image2,
   image3,
   image4,
