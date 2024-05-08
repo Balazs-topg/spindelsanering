@@ -51,21 +51,52 @@ import { Button } from "@/components/ui/button";
     <KontaktaOssDialog client:idle />
     <slot />
     <footer class="bg-neutral-100 px-4 py-32">
-      <div class="mx-auto max-w-7xl">
-        <div class="flex items-center">
-          <Mail className="mr-2 size-5" /> info@spindelsanering-goteborg.se
+      <div class="mx-auto flex max-w-7xl justify-between gap-4">
+        <div>
+          <div class="flex items-center">
+            <Mail className="mr-2 size-5" /> info@spindelsanering-goteborg.se
+          </div>
+          <div class="flex items-center">
+            <Phone className="mr-2 size-5" /> 073-6551713
+          </div>
+          <div class="mt-4">
+            <a
+              class={`${buttonVariants({ size: "icon" })}`}
+              href="https://www.instagram.com/spindelsanering_goteborg.se/"
+              target="_blank"
+            >
+              <Instagram className="size-5" />
+            </a>
+          </div>
         </div>
-        <div class="flex items-center">
-          <Phone className="mr-2 size-5" /> 073-6551713
-        </div>
-        <div class="mt-4">
-          <a
-            class={`${buttonVariants({ size: "icon" })}`}
-            href="https://www.instagram.com/spindelsanering_goteborg.se/"
-            target="_blank"
-          >
-            <Instagram className="size-5" />
-          </a>
+        <div class="mb-4 max-w-xl">
+          <strong>Våra Verksamhetsområden</strong>
+          <br />
+          <br />
+          Utforska våra primära verksamhetsområden där vi ger spindelfria lösningar
+          till våra kunder. Nedan ser du några av de platser där vi aktivt utför
+          våra uppdrag.
+          <br />
+          <br />
+          <strong>Västra Götalands län:</strong> Göteborg, Mölndal, Borås, Kinna,
+          Ulricehamn, Lerum, Alingsås, Kungälv, Vårgårda, Herrljunga, Falköping,
+          Tidaholm, Hjo, Skövde, Skara, Tibro, Karlsborg, Mariestad, Lidköping, Vänersborg,
+          Trollhättan, Ljungskile, Lilla Edet, Munkedal.
+          <br />
+          <br />
+          <strong>Hallands län:</strong> Laholm, Mellbystrand, Halmstad, Tylösand,
+          Hyltebruk, Falkenberg, Torup, Ullared, Varberg, Kungsbacka Torup, Ullared,
+          Varberg, Kungsbacka
+          <br />
+          <br />
+          <strong>Jönköpings län:</strong> Rydaholm, Värnamo, Forsheda, Smålandsstenar,
+          Vetlanda, Sävsjö, Anderstorp, Gislaved, Gnosjö, Hillerstorp, Skillingaryd,
+          Vaggeryd, Eksjö, Nässjö, Aneby, Husqvarna, Jönköping, Mullsjö, Tranås.
+          <br />
+          <br />
+          <strong>Kronobergs Län:</strong> Älmhult, Markaryd, Strömsnäsbruk, Tingsryd,
+          Lessebo, Hovmantorp, Ingelstad, Alvesta, Grimslöv, Vislanda, Gemla, Växjö,
+          Ljungby, Lagan, Moheda, Lenhovda, Braås, Åseda.
         </div>
       </div>
     </footer>
